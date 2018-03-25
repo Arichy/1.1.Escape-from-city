@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+	<meta charset="UTF-8">
+	<title>1.1.	自回避随机行走问题</title>
+	<link rel="stylesheet" type="text/css" href="./node_modules/element-ui/lib/theme-chalk/index.css">
+	<link rel="stylesheet" type="text/css" href="./index.css">
+</head>
+<body>
+	<div id="app">
+		<el-row>
+			<el-col :span="12" :offset="3">
+				<h1>{{title}}</h1>
+			</el-col>
+		</el-row>
+
+		<el-row>
+			<el-col :span="20" :offset="2">
+				<hr>
+			</el-col>
+		</el-row>
+
+		<el-row>
+			<el-col :span="20" :offset="2">
+				<fieldset>
+					<legend>问题描述：</legend>
+					<p>假设有一条狗放在某个城市中心点，它试图逃出城市，此城市有N条南北走向的街道和N条东西走向的街道，所有街道均匀交叉分布构成网格形式。这条狗在逃出城市的过程中，遇到每个交叉路口则按照随机概率的大小选择前进方向，它能够通过灵敏的嗅觉和记忆不走重复路。当狗走到某个交叉路口时，如果三个可选方向均指向以前走过的路口就必须回头，则陷入死胡同状态。</p>
+				</fieldset>
+				
+			</el-col>
+		</el-row>
+
+		<el-row style="height: 30px;">
+			<el-col :span="4" :offset="6">
+				<el-alert type="error" :closable="false" :title="errMsg" v-show="errSeen"></el-alert>
+			</el-col>
+		</el-row>
+
+		<el-row :gutter="20" style="margin-top: 20px">
+			<el-col :span="4" :offset="8">			
+				<el-input placeholder="请输入N的值(1-99)" v-model="input" clearable :disabled="flag"></el-input>
+			</el-col>
+			<el-col :span="5">
+				<el-input placeholder="请输入实验次数(1-10000)" v-model="tryTime" clearable @input="resultArr[0].question=`${Number.isInteger(parseFloat(tryTime))?tryTime:'x'}次实验中，陷入死胡同的次数为:`" :disabled="flag"></el-input>
+			</el-col>
+		</el-row>
+
+		<el-row type="flex" justify="center">
+			<div>
+				<el-button @click="cal(input,tryTime)" :disabled="flag">Start!</el-button>
+			</div>
+		</el-row>
+
+		<el-row style="margin-top: 40px;">
+			<el-col :span="12" :offset="6">
+				<template>
+					<el-table :data="resultArr" border>
+						<el-table-column prop="question" label="问题" style="width: 50%;">
+							
+						</el-table-column>
+						<el-table-column prop="answer" label="答案" style="width: 50%;">
+							
+						</el-table-column>
+					</el-table>
+				</template>
+			</el-col>
+		</el-row>
+
+	</div>
+
+	<script type="text/javascript" src="./node_modules/vue/dist/vue.js"></script>
+	<script type="text/javascript" src="./node_modules/element-ui/lib/index.js"></script>
+	<script type="text/javascript" src="./1.1-experiment.js"></script>
+	<script type="text/javascript" src="./index.js"></script>
+</body>
+</html>

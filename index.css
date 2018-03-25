@@ -1,0 +1,29 @@
+*{
+	font-family: sans-serif;
+}
+
+body{
+	background-color: rgba(0,0,0,0.02);
+}
+
+hr{
+	opacity: 0.5;
+}
+
+.el-row{
+	margin-top: 10px;
+}
+
+fieldset{
+	border-radius: 10px;
+	border: 1px solid black;
+	box-shadow: 5px -5px 5px 0 grey
+}
+
+legend{
+	font-size: 20px;
+}
+
+p{
+	text-indent: 2em;
+}
